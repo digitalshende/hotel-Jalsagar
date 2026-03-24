@@ -1,0 +1,163 @@
+.gallery{
+    padding:70px 20px;
+    text-align:center;
+    background:#f9f9f9;
+}
+
+.gallery-box{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.gallery-box img{
+    width:100%;   
+    height:200px; 
+    object-fit:cover;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+    transition:0.4s;
+}
+
+.gallery-box img:hover{
+    transform:scale(1.05);
+}
+
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slides img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.image-content {
+    text-align: center;
+}
+
+
+.center-text {
+  text-align: left;
+  padding: 40px;
+}
+
+.green-heading {
+  color: #2e8b57;
+}
+
+.grey-text {
+  color: #555;
+  max-width: 800px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul {
+    list-style: none;
+    padding: 0; 
+}
+
+.footer {
+    background-color: #003366;  
+    padding: 20px 0;
+}
+
+.footer-col {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-col h4::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #e91e63;
+    height: 2px;
+    width: 50px;
+}
+
+.footer-col ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    font-size: 16px;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+    padding-left: 8px;
+}
+
+.footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+    color: #24262b;
+    background-color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .footer-col {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 574px) {
+    .footer-col {
+        width: 100%;
+    }
+}
+
+.hotel-title {
+    text-align: center;      
+    background-color: orange;   
+    color: white;             
+    padding: 15px 0;          
+    margin: 0;                
+}

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="history.css">
+
+<style>
+
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #87CEEB;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color:#D6EAF8;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #2E86C1;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+
+.slider {
+    width: 100%;
+}
+
+.slides img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+
+.about-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    gap: 40px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.green-heading {
+    color: #2e8b57;
+}
+
+.grey-text {
+    color: #555;
+    line-height: 1.6;
+}
+
+.image-content {
+    flex: 1;
+    text-align: right;
+}
+
+.image-content img {
+    width: 500px;
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+
+
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.footer {
+    background-color: #003366;
+    padding: 20px 0;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #bbbbbb;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+}
+
+.footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: white;
+    margin-right: 10px;
+}
+
+.footer-col .social-links a:hover {
+    background-color: white;
+    color: #24262b;
+}
+
+/* Footer Responsive */
+@media (max-width: 767px) {
+    .footer-col {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 574px) {
+    .footer-col {
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+
+
+
+<body>
+
+<h2 class="hotel-title">Hotel Jalsagar</h2>
+
+<div class="topnav" id="myTopnav">
+    <a href="index.html" class="active">Home</a>
+    <a href="about us.html">About</a>
+    <a href="history.html">History</a>
+    <a href="menu.html">Menu</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="service.html">Service</a>
+    <a href="contact.html">Contact</a>
+    <a href="feedback.html">feedback</a>
+<a href="order.html">Order</a>
+<a href="tablereservation.html">Table Reservation</a>
+<a href="announcement.html">Announcement</a>
+    <a href="admin.html">admin</a>
+
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+
+
+
+
+<div class="slider">
+    <div class="slides">
+        <img src="images/jal.jpg" alt="Hotel View">
+    </div>
+</div>
+
+
+
+
+<div class="about-section">
+    <div class="text-content">
+        <h1 class="green-heading">History</h1>
+        <p class="grey-text">
+ <b>Our History – Hotel Jalsagar</b>
+A Tradition of Great Taste Since 2000 Hotel Jalsagar began its journey in the year 2000 on the bustling Satara-Medha-Mahabaleshwar Road, in the heart of Satara, Maharashtra. What started more than two decades ago as a humble roadside dhaba has grown into one of the region’s most well-recognized family restaurants and local dining favourites.
+<br>
+<b>Roots & Evolution</b>
+From the very beginning, the vision behind Hotel Jalsagar was simple: serve honest, flavourful food in a welcoming environment. Over the years, the restaurant became known for its freshly cooked meals, generous portions, and meals that reflect both local Maharashtrian tastes and wider Indian culinary influences. With consistent quality and an inviting atmosphere, Jalsagar earned the trust and loyalty of residents, travellers, and food lovers alike.
+<br>
+<b>Growing With the Community</b>
+As the business matured, Hotel Jalsagar didn’t just become a place to eat — it became a part of Satara’s everyday life. Many visitors remember returning year after year, bringing friends and family to share memorable meals. From hearty lunches after a long journey to relaxed dinners with loved ones, Jalsagar has played a role in countless stories and gatherings.
+<br>
+<b>Culinary Identity</b>
+Over time, the restaurant developed a distinctive menu that blends traditional dhaba classics with popular seafood and speciality dishes. While the focus on excellence remained constant, the offerings expanded to suit changing tastes — always keeping quality at its core. This evolution has helped Jalsagar stay relevant and beloved even as new restaurants emerge in the area.
+<br>
+<b>Today & Beyond</b>
+Today, Hotel Jalsagar stands as a testament to dedication, consistency, and community connection. More than 25 years after its establishment, it continues to welcome guests with warm hospitality and delicious food, staying true to the spirit it was founded on.
+From its first days by the roadside to becoming a beloved Satara landmark, the history of Hotel Jalsagar is a story of passion for food and service that brings people together.
+       
+        </p>
+    </div>
+
+    <div class="image-content">
+        <img src="images/b.jpg" alt="Hotel Jalsagar">
+    </div>
+</div>
+
+  
+
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-row">
+
+            <div class="footer-col">
+                <h4>Hotel Jalsagar</h4>
+                <ul>
+                    <li><a href="about us.html">About Us</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="developer.html">Developer</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Address</h4>
+                <ul>
+		 <li><a href="https://maps.google.com/?q=Hotel+Jalsagar+Satara">Satara-Medha Road, Maharashtra</a></li>
+                    <li><a href=""tel:+919823329033">+91 98233 29033</a></li>
+                    <li><a href="mailto:info@hoteljalsagar.com">info@hoteljalsagar.com</a></li>
+
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/p/Hotel-Jalsagar-100063871367185/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/hotel_jalsagar_satara_?igsh=OGhxczFlZnN4ejVt"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+
+</body>
+</html>

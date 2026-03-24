@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Order Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Write your Feedback</h1>
+        <form id="orderForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="from_name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="from_email" required>
+
+            <label for="product">Feedback</label>
+            <input type="text" id="product" name="product_name" required>
+
+            <label for="quantity">Phone No</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+
+            <button type="submit">Submit </button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Your custom script -->
+    <script src="script.js"></script>
+</body>
+</html>

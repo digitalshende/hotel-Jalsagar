@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+
+
+
+.back-btn{
+display:inline-block;
+margin-bottom:20px;
+text-decoration:none;
+background:#667eea;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+font-size:14px;
+}
+
+.back-btn:hover{
+background:#5a67d8;
+}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #e0f2fe;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        h1 i {
+            color: #667eea;
+        }
+        .message-feed {
+            list-style: none;
+        }
+        .message-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #667eea;
+        }
+        .message-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .message-text {
+            font-size: 1.2rem;
+            color: #1a202c;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .message-time {
+            font-size: 0.9rem;
+            color: #718096;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .message-time i {
+            font-size: 1rem;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #718096;
+        }
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<a href="index.html" class="back-btn">
+<i class="fas fa-arrow-left"></i> back
+</a>
+
+<h1><i class="fas fa-bullhorn"></i> Hotel Jalasagar</h1>
+
+<ul class="message-feed" id="message-feed">
+
+<li class="empty-state">
+<i class="fas fa-inbox"></i>
+<p>No announcements yet. Check back soon!</p>
+</li>
+
+</ul>
+
+<div class="footer">
+<i class="fas fa-sync-alt fa-spin"></i> Live updates
+</div>
+
+</div>
+
+
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+          apiKey: "AIzaSyDwHlMKLkukQ_fpubU98rEMxYmfPoRZ0kI",
+  authDomain: "hotel-jalsagar.firebaseapp.com",
+  projectId: "hotel-jalsagar",
+  storageBucket: "hotel-jalsagar.firebasestorage.app",
+  messagingSenderId: "873304480297",
+  appId: "1:873304480297:web:1137c0b2c01fe1a7c71a38",
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const messageFeed = document.getElementById('message-feed');
+
+        // Listen for new messages in realtime
+        const messagesRef = db.ref('messages');
+        messagesRef.orderByChild('timestamp').limitToLast(20).on('value', snapshot => {
+            const messages = snapshot.val();
+            if (!messages) {
+                messageFeed.innerHTML = '<li class="empty-state"><i class="fas fa-inbox"></i><p>No announcements yet. Check back soon!</p></li>';
+                return;
+            }
+
+            // Convert to array and sort newest first
+            const messagesArray = Object.entries(messages).map(([id, msg]) => ({ id, ...msg }));
+            messagesArray.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+
+            let html = '';
+            messagesArray.forEach(msg => {
+                const time = msg.timestamp ? new Date(msg.timestamp).toLocaleString() : 'Just now';
+                html += `
+                    <li class="message-card">
+                        <div class="message-text">${msg.text}</div>
+                        <div class="message-time"><i class="far fa-clock"></i> ${time}</div>
+                    </li>
+                `;
+            });
+            messageFeed.innerHTML = html;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="about us.css">
+
+<style>
+
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #87CEEB;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #D6EAF8;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #2E86C1;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+
+.slider {
+    width: 100%;
+}
+
+.slides img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+
+.about-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    gap: 40px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.green-heading {
+    color: #2e8b57;
+}
+
+.grey-text {
+    color: #555;
+    line-height: 1.6;
+}
+
+.image-content {
+    flex: 1;
+    text-align: right;
+}
+
+.image-content img {
+    width: 500px;
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+
+
+
+.container {
+    max-width: 1100px;
+    margin: cauto;
+}
+
+.footer {
+    background-color: #003366;
+    padding: 20px 0;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #bbbbbb;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+}
+
+.footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: white;
+    margin-right: 10px;
+}
+
+.footer-col .social-links a:hover {
+    background-color: white;
+    color: #24262b;
+}
+
+/* Footer Responsive */
+@media (max-width: 767px) {
+    .footer-col {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 574px) {
+    .footer-col {
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+
+
+<!-- ===== NAVIGATION BAR ===== -->
+<body>
+
+<h2 class="hotel-title">Hotel Jalsagar</h2>
+
+<div class="topnav" id="myTopnav">
+    <a href="index.html" class="active">Home</a>
+    <a href="about us.html">About us</a>
+    <a href="history.html">History</a>
+    <a href="menu.html">Menu</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="service.html">Service</a>
+    <a href="contact.html">Contact</a>
+ <a href="feedback.html">feedback</a>
+<a href="order.html">Order</a>
+<a href="tablereservation.html">Table Reservation</a>
+<a href="announcement.html">Announcement</a>
+    <a href="admin.html">admin</a>
+
+<a href="Admin/announcement.html">Announcement</a>
+    <a href="Admin/admin.html">admin</a>
+
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+
+
+
+<!-- ===== Image Slider ===== -->
+
+<div class="slider">
+    <div class="slides">
+        <img src="images/jal.jpg" alt="Hotel View">
+    </div>
+</div>
+
+
+
+<!-- ===== Paragraph ===== -->
+
+<div class="about-section">
+    <div class="text-content">
+        <h1 class="green-heading">About us</h1>
+        <p class="grey-text">
+ <b>About Us – Hotel Jalsagar:</b>
+Welcome to Hotel Jalsagar, a beloved dining destination on Satara-Medha-Mahabaleshwar Road in Satara, Maharashtra. With over two decades of service to locals and travelers alike, we have built a reputation for freshly prepared, flavour-rich cuisine with hospitality at its heart.
+Who We Are 
+Situated in the scenic region of Satara, Hotel Jalsagar is more than just a restaurant — it’s a place where great food, warm service, and memorable moments come together. Since our beginning in the early 2000s, we’ve been dedicated to delivering delicious meals, a welcoming environment, and an experience that brings people back time and again.<br>
+
+<b>What We Serve:</b>
+At Hotel Jalsagar, we celebrate the flavours of Maharashtra and beyond. Our menu features everything from classic dhaba favourites to speciality seafood dishes, prepared with care using fresh ingredients. Guests often praise iconic dishes like fish fry, asmli fry, mutton masala, and surmai tava masala — each dish served with generous portions and authentic taste.
+Whether you’re stopping by for a relaxed lunch with friends, a hearty dinner after a day of travel, or a special meal with family, our menu has something to satisfy every palate.<br>
+
+<b>Atmosphere & Experience:</b>
+Our restaurant brings together a friendly atmosphere and attentive service to make every visit comfortable and enjoyable. Many guests appreciate not just the food, but also the welcoming staff and inviting setting that make Jalsagar feel like a home away from home.<br>
+
+<b>Our Commitment:</b>
+We believe in:
+Quality and freshness in every dish.<br>
+Warm hospitality for all our guests.<br>
+Value for money, with satisfying portions at reasonable prices.<br>
+Our team works every day to ensure your dining experience reflects these core values.
+<br>
+<b>Location & Hours:</b>
+Conveniently located on Satara-Medha-Mahabaleshwar Road, Hotel Jalsagar is open daily from late morning to late evening, ready to welcome you for lunch, dinner, and everything in between.
+       
+        </p>
+    </div>
+
+
+    <div class="image-content">
+        <img src="images/a.jpeg" alt="Hotel Jalsagar">
+    </div>
+</div>
+
+
+<!-- ===== Footer ===== -->
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-row">
+
+            <div class="footer-col">
+                <h4>Hotel Jalsagar</h4>
+                <ul>
+                    <li><a href="about us.html">About Us</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="developer.html">Developer</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Address</h4>
+                <ul>
+		    <li><a href="https://maps.google.com/?q=Hotel+Jalsagar+Satara">Satara-Medha Road, Maharashtra</a></li>
+                    <li><a href=""tel:+919823329033">+91 98233 29033</a></li>
+                    <li><a href="mailto:info@hoteljalsagar.com">info@hoteljalsagar.com</a></li>
+
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/p/Hotel-Jalsagar-100063871367185/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/hotel_jalsagar_satara_?igsh=OGhxczFlZnN4ejVt"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+
+</body>
+</html>

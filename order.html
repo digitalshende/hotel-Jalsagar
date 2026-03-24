@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Order Your Food</h1>
+
+    <form id="orderForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+
+        <label for="product">Select Food Item</label>
+        <select id="product" required>
+            <option value="">--Choose Item--</option>
+            <!-- Chicken -->
+    <optgroup label="Chicken Dishes">
+        <option value="Chicken Masala">Chicken Masala</option>
+        <option value="Chicken Roast">Chicken Roast</option>
+        <option value="Chicken Fry">Chicken Fry</option>
+        <option value="Chicken Kolhapuri">Chicken Kolhapuri</option>
+        <option value="Chicken Moghlai">Chicken Moghlai</option>
+        <option value="Butter Chicken Handi">Butter Chicken Handi</option>
+        <option value="Malvani Chicken Handi">Malvani Chicken Handi</option>
+        <option value="Chicken Maratha Handi">Chicken Maratha Handi</option>
+        <option value="Chicken Handi">Chicken Handi</option>
+        <option value="Chicken Patiala">Chicken Patiala</option>
+        <option value="Chicken Tiranga">Chicken Tiranga</option>
+        <option value="Chicken Afghani">Chicken Afghani</option>
+    </optgroup>
+
+    <!-- Mutton -->
+    <optgroup label="Mutton Dishes">
+        <option value="Mutton Roast">Mutton Roast</option>
+        <option value="Mutton Fry">Mutton Fry</option>
+        <option value="Mutton Masala">Mutton Masala</option>
+        <option value="Mutton Kolhapuri">Mutton Kolhapuri</option>
+        <option value="Mutton Moghlai">Mutton Moghlai</option>
+        <option value="Mutton Handi">Mutton Handi</option>
+        <option value="Mutton Patiala">Mutton Patiala</option>
+        <option value="Mutton Maratha Handi">Mutton Maratha Handi</option>
+    </optgroup>
+
+    <!-- Soup -->
+    <optgroup label="Soup">
+        <option value="Veg Manchow Soup">Veg Manchow Soup</option>
+        <option value="Veg Mushroom Soup">Veg Mushroom Soup</option>
+        <option value="Tomato Soup">Tomato Soup</option>
+        <option value="Chicken Soup">Chicken Soup</option>
+        <option value="Mutton Soup">Mutton Soup</option>
+    </optgroup>
+
+    <!-- Egg -->
+    <optgroup label="Egg Dishes">
+        <option value="Egg Curry">Egg Curry</option>
+        <option value="Egg Masala">Egg Masala</option>
+        <option value="Egg Bhurji">Egg Bhurji</option>
+    </optgroup>
+
+    <!-- Tandoor -->
+    <optgroup label="Tandoor Special">
+        <option value="Chicken Tikka">Chicken Tikka</option>
+        <option value="Chicken Tangdi Kebab">Chicken Tangdi Kebab</option>
+        <option value="Paneer Tikka">Paneer Tikka</option>
+        <option value="Chicken Malai Kebab">Chicken Malai Kebab</option>
+        <option value="Chicken Tandoor">Chicken Tandoor</option>
+    </optgroup>
+
+    <!-- Veg -->
+    <optgroup label="Veg Dishes">
+        <option value="Dal Fry">Dal Fry</option>
+        <option value="Dal Tadka">Dal Tadka</option>
+        <option value="Paneer Butter Masala">Paneer Butter Masala</option>
+        <option value="Paneer Masala">Paneer Masala</option>
+        <option value="Paneer Matar">Paneer Matar</option>
+        <option value="Mix Veg">Mix Veg</option>
+        <option value="Bhindi Fry">Bhindi Fry</option>
+        <option value="Baingan Bharta">Baingan Bharta</option>
+    </optgroup>
+
+    <!-- Special -->
+    <optgroup label="Jalsagar Special">
+        <option value="Jalsagar Special Dish">Jalsagar Special Dish</option>
+        <option value="Jalsagar Special Handi">Jalsagar Special Handi</option>
+        <option value="Malai Kofta">Malai Kofta</option>
+        <option value="Paneer Pasanda">Paneer Pasanda</option>
+    </optgroup>
+        </select>
+
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" min="1" value="1" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required>
+
+        <label for="address">Delivery Address</label>
+        <textarea id="address" required></textarea>
+
+        <button type="submit">Place Order</button>
+    </form>
+
+    <div id="message"></div>
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script src="order.js"></script>
+
+</body>
+</html>

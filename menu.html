@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+       <link rel="stylesheet" href="gallery.css">
+
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+
+.hotel-title{
+background:#f39c12;
+color:white;
+text-align:center;
+font-size:20px;
+padding:10px 0;
+margin:0;
+font-weight:bold;
+}
+
+/* NAVBAR */
+
+.topnav{
+overflow:hidden;
+background-color:#87CEEB;
+}
+
+.topnav a{
+float:left;
+display:block;
+color:#ffffff;
+text-align:center;
+padding:14px 16px;
+text-decoration:none;
+font-size:17px;
+}
+
+.topnav a:hover{
+background-color:#D6EAF8;
+color:black;
+}
+
+.topnav a.active{
+background-color:#2E86C1;
+color:white;
+}
+
+.topnav .icon{
+display:none;
+}
+
+@media screen and (max-width:600px){
+
+.topnav a:not(:first-child){
+display:none;
+}
+
+.topnav a.icon{
+float:right;
+display:block;
+}
+
+.topnav.responsive{
+position:relative;
+}
+
+.topnav.responsive .icon{
+position:absolute;
+right:0;
+top:0;
+}
+
+.topnav.responsive a{
+float:none;
+display:block;
+text-align:left;
+}
+
+}
+
+/* SLIDER */
+
+.slides img{
+width:100%;
+height:500px;
+object-fit:cover;
+}
+
+/* GALLERY */
+
+.portfolio{
+padding:60px 20px;
+text-align:center;
+}
+
+.portfolio-gallery{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
+}
+
+.inner img{
+width:350px;
+height:350px;
+object-fit:cover;
+border-radius:10px;
+}
+
+/* FOOTER */
+
+.container{
+max-width:1100px;
+margin: auto;
+}
+
+.footer{
+background:#003366;
+padding:30px 0;
+}
+
+.footer-row{
+display:flex;
+flex-wrap:wrap;
+}
+
+.footer-col{
+width:25%;
+padding:0 15px;
+}
+
+.footer-col h4{
+color:#ffffff;
+margin-bottom:20px;
+}
+
+.footer-col ul{
+list-style:none;
+padding:0;
+}
+
+.footer-col ul li{
+margin-bottom:10px;
+}
+
+.footer-col ul li a{
+text-decoration:none;
+color:#bbbbbb;
+}
+
+.footer-col ul li a:hover{
+color:white;
+}
+
+.social-links a{
+display:inline-block;
+height:40px;
+width:40px;
+background:rgba(255,255,255,0.2);
+text-align:center;
+line-height:40px;
+border-radius:50%;
+color:white;
+margin-right:10px;
+}
+
+.social-links a:hover{
+background:white;
+color:black;
+}
+
+@media(max-width:767px){
+.footer-col{
+width:50%;
+margin-bottom:20px;
+}
+}
+
+@media(max-width:574px){
+.footer-col{
+width:100%;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<h1 class="hotel-title">Hotel Jalsagar</h1>
+
+<!-- NAVBAR -->
+
+<div class="topnav" id="myTopnav">
+
+<a href="index.html" class="active">Home</a>
+<a href="about us.html">About</a>
+<a href="history.html">History</a>
+<a href="menu.html">Menu</a>
+<a href="gallery.html">Gallery</a>
+<a href="service.html">Service</a>
+<a href="contact.html">Contact</a>
+<a href="feedback.html">Feedback</a>
+<a href="order.html">Order</a>
+<a href="tablereservation.html">Table Reservation</a>
+<a href="announcement.html">Announcement</a>
+<a href="admin.html">Admin</a>
+
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+<i class="fa fa-bars"></i>
+</a>
+
+</div>
+
+<!-- SLIDER -->
+
+<div class="slides">
+<img src="images/jal.jpg" alt="Hotel View">
+</div>
+
+<!-- GALLERY -->
+
+<section class="portfolio">
+
+<h1 style="color:#2e8b57;">Menu</h1>
+
+<div class="portfolio-gallery">
+
+<div class="inner"><img src="images/menu.png"></div>
+<div class="inner"><img src="images/menu1.png"></div>
+<div class="inner"><img src="images/menu2.png"></div>
+<div class="inner"><img src="images/menu3.jpeg"></div>
+
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-row">
+
+<div class="footer-col">
+<h4>Hotel Jalsagar</h4>
+<ul>
+<li><a href="about us.html">About Us</a></li>
+<li><a href="service.html">Services</a></li>
+<li><a href="developer.html">Developer</a></li>
+</ul>
+</div>
+
+<div class="footer-col">
+<h4>Services</h4>
+<ul>
+<li><a href="menu.html">Menu</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+<div class="footer-col">
+<h4>Address</h4>
+<ul>
+<li><a href="https://maps.google.com/?q=Hotel+Jalsagar+Satara">Satara-Medha Road, Maharashtra</a></li>
+ <li><a href=""tel:+919823329033">+91 98233 29033</a></li>
+<li><a href="mailto:info@hoteljalsagar.com">info@hoteljalsagar.com</a></li>
+
+</ul>
+</div>
+
+<div class="footer-col">
+<h4>Follow Us</h4>
+
+<div class="social-links">
+<a href="https://www.facebook.com/p/Hotel-Jalsagar-100063871367185/"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/hotel_jalsagar_satara_?igsh=OGhxczFlZnN4ejVt"><i class="fab fa-instagram"></i></a>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+function myFunction(){
+var x=document.getElementById("myTopnav");
+
+if(x.className==="topnav"){
+x.className+=" responsive";
+}else{
+x.className="topnav";
+}
+}
+
+</script>
+
+</body>
+</html>

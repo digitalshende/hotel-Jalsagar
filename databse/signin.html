@@ -1,0 +1,306 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Auth – Sign In / Sign Up</title>
+    <!-- Google Fonts & modern CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem;
+        }
+        .auth-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 420px;
+            transition: all 0.3s ease;
+        }
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            background: #f1f5f9;
+            padding: 0.25rem;
+            border-radius: 2rem;
+        }
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem 0;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            border-radius: 2rem;
+            transition: all 0.2s;
+        }
+        .tab.active {
+            background: white;
+            color: #4f46e5;
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+        }
+        .auth-form {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .auth-form.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0.3; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .input-group {
+            margin-bottom: 1.25rem;
+        }
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #334155;
+            margin-bottom: 0.3rem;
+        }
+        input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 1rem;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.15s;
+            background: white;
+        }
+        input:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+        .btn {
+            width: 100%;
+            padding: 0.9rem;
+            background: #4f46e5;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 8px 16px -4px rgba(79, 70, 229, 0.4);
+        }
+        .btn:hover {
+            background: #4338ca;
+            transform: scale(1.02);
+        }
+        .error-message {
+            color: #dc2626;
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
+            text-align: center;
+            background: #fee2e2;
+            padding: 0.5rem;
+            border-radius: 0.75rem;
+            display: none;
+        }
+        .info-text {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="tabs">
+            <div class="tab active" id="tabSignIn">Sign In</div>
+            <div class="tab" id="tabSignUp">Sign Up</div>
+        </div>
+
+        <!-- SIGN IN FORM -->
+        <div class="auth-form active" id="signInForm">
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="signinEmail" placeholder="michael@example.com">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="signinPassword" placeholder="••••••••">
+            </div>
+            <button class="btn" id="signInBtn">Sign In</button>
+            <a href="../courses.html" class="btn" style="margin-top:10px;
+                                                         background:#64748b;
+                                                         display:block;
+                                                         text-align:center;
+                                                         text-decoration:none;">
+                          ← Go Back
+             </a>
+            <div class="error-message" id="signinError"></div>
+        </div>
+
+        <!-- SIGN UP FORM -->
+        <div class="auth-form" id="signUpForm">
+            <div class="input-group">
+                <label>Display Name</label>
+                <input type="text" id="signupName" placeholder="John Doe">
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="signupEmail" placeholder="john@example.com">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="signupPassword" placeholder="Min. 6 characters">
+            </div>
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <input type="password" id="signupConfirmPassword" placeholder="••••••••">
+            </div>
+            <button class="btn" id="signUpBtn">Sign Up</button>
+            <div class="error-message" id="signupError"></div>
+        </div>
+        <div class="info-text">Secure authentication with Firebase</div>
+    </div>
+
+    <!-- Firebase SDK (modular v9) -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js';
+        import { 
+            getAuth, 
+            signInWithEmailAndPassword, 
+            createUserWithEmailAndPassword,
+            updateProfile,
+            onAuthStateChanged 
+        } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js';
+
+        // 🔁 REPLACE WITH YOUR FIREBASE CONFIG
+        const firebaseConfig = {
+ apiKey: "AIzaSyDwHlMKLkukQ_fpubU98rEMxYmfPoRZ0kI",
+  authDomain: "hotel-jalsagar.firebaseapp.com",
+  databaseURL: "https://hotel-jalsagar-default-rtdb.firebaseio.com",
+  projectId: "hotel-jalsagar",
+  storageBucket: "hotel-jalsagar.firebasestorage.app",
+  messagingSenderId: "873304480297",
+  appId: "1:873304480297:web:1137c0b2c01fe1a7c71a38",
+  measurementId: "G-SZC7GH0WT2"
+};
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Redirect if already logged in (prevent seeing auth page)
+        onAuthStateChanged(auth, (user) => {
+if (user) {
+window.location.href = 'profile.html';
+}
+});
+
+        // ----- UI Elements -----
+        const tabSignIn = document.getElementById('tabSignIn');
+        const tabSignUp = document.getElementById('tabSignUp');
+        const signInForm = document.getElementById('signInForm');
+        const signUpForm = document.getElementById('signUpForm');
+
+        // Tab switching
+        tabSignIn.addEventListener('click', () => {
+            tabSignIn.classList.add('active');
+            tabSignUp.classList.remove('active');
+            signInForm.classList.add('active');
+            signUpForm.classList.remove('active');
+        });
+
+        tabSignUp.addEventListener('click', () => {
+            tabSignUp.classList.add('active');
+            tabSignIn.classList.remove('active');
+            signUpForm.classList.add('active');
+            signInForm.classList.remove('active');
+        });
+
+        // ----- Sign In -----
+        document.getElementById('signInBtn').addEventListener('click', async () => {
+            const email = document.getElementById('signinEmail').value.trim();
+            const password = document.getElementById('signinPassword').value;
+            const errorDiv = document.getElementById('signinError');
+            
+            errorDiv.style.display = 'none';
+            
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                // onAuthStateChanged will redirect
+            } catch (error) {
+                errorDiv.textContent = error.message;
+                errorDiv.style.display = 'block';
+            }
+        });
+
+        // ----- Sign Up -----
+        document.getElementById('signUpBtn').addEventListener('click', async () => {
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirm = document.getElementById('signupConfirmPassword').value;
+            const errorDiv = document.getElementById('signupError');
+
+            errorDiv.style.display = 'none';
+
+            if (!name || !email || !password || !confirm) {
+                errorDiv.textContent = 'Please fill in all fields.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            if (password !== confirm) {
+                errorDiv.textContent = 'Passwords do not match.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            if (password.length < 6) {
+                errorDiv.textContent = 'Password must be at least 6 characters.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                // Set display name
+                await updateProfile(userCredential.user, { displayName: name });
+                // onAuthStateChanged will redirect
+            } catch (error) {
+                errorDiv.textContent = error.message;
+                errorDiv.style.display = 'block';
+            }
+        });
+
+        // Allow "Enter" key to submit (optional)
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                if (signInForm.classList.contains('active')) {
+                    document.getElementById('signInBtn').click();
+                } else {
+                    document.getElementById('signUpBtn').click();
+                }
+            }
+        }));
+
+        const backBtn = document.getElementById("backBtn");
+
+        backBtn.addEventListener("click", () => {
+        window.location.href = "../courses.html";
+        });
+    </script>
+</body>
+</html>

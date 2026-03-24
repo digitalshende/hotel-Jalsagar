@@ -1,0 +1,206 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile – Firebase Auth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #0b8793, #360033);
+            padding: 1rem;
+        }
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem 2rem;
+            border-radius: 2rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 440px;
+            text-align: center;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #4f46e5, #9f7aea);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.4);
+        }
+        .greeting {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4f46e5, #9f7aea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .detail-item {
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-radius: 3rem;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+            border: 1px solid #e2e8f0;
+        }
+        .detail-item i {
+            font-size: 1.4rem;
+            background: #4f46e5;
+            color: white;
+            padding: 0.3rem;
+            border-radius: 50%;
+            width: 2.2rem;
+            height: 2.2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .detail-item span {
+            color: #1e293b;
+            word-break: break-all;
+        }
+        .signout-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 3rem;
+            cursor: pointer;
+            margin-top: 2rem;
+            width: 100%;
+            transition: 0.2s;
+            box-shadow: 0 8px 16px rgba(239, 68, 68, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .signout-btn:hover {
+            background: #dc2626;
+            transform: scale(1.02);
+        }
+        .loader {
+            display: none;
+            color: #4f46e5;
+            font-weight: 600;
+        }
+    </style>
+    <!-- Font Awesome for icons (optional but nice) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="profile-card">
+        <div class="avatar" id="avatar">👤</div>
+        <div class="greeting" id="greeting">Hello!</div>
+        
+        <div class="detail-item">
+            <i class="fas fa-envelope"></i>
+            <span id="userEmail">email@example.com</span>
+        </div>
+        <div class="detail-item">
+            <i class="fas fa-user-tag"></i>
+            <span id="userDisplayName">Display Name</span>
+        </div>
+        <div class="detail-item">
+            <i class="fas fa-id-card"></i>
+            <span id="userUID">User ID</span>
+        </div>
+        <button class="signout-btn" id="viewCoursesBtn" style="background:#4f46e5;">
+        <i class="fas fa-book"></i> View Courses
+        </button>
+        <button class="signout-btn" id="signOutBtn">
+            <i class="fas fa-sign-out-alt"></i> Sign Out
+        </button>
+        <div class="loader" id="loader">Loading profile...</div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js';
+        import { 
+            getAuth, 
+            signOut, 
+            onAuthStateChanged 
+        } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js';
+
+        // 🔁 USE THE SAME FIREBASE CONFIG AS IN SIGNIN.HTML
+       const firebaseConfig = {
+apiKey: "AIzaSyDwHlMKLkukQ_fpubU98rEMxYmfPoRZ0kI",
+  authDomain: "hotel-jalsagar.firebaseapp.com",
+  projectId: "hotel-jalsagar",
+  storageBucket: "hotel-jalsagar.firebasestorage.app",
+  messagingSenderId: "873304480297",
+  appId: "1:873304480297:web:1137c0b2c01fe1a7c71a38",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // DOM elements
+        const avatar = document.getElementById('avatar');
+        const greeting = document.getElementById('greeting');
+        const userEmail = document.getElementById('userEmail');
+        const userDisplayName = document.getElementById('userDisplayName');
+        const userUID = document.getElementById('userUID');
+        const viewCoursesBtn = document.getElementById('viewCoursesBtn');
+        const signOutBtn = document.getElementById('signOutBtn');
+        const loader = document.getElementById('loader');
+
+        // Protect this page: if no user, redirect to signin
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                window.location.href = '../signin.html';
+                return;
+            }
+
+            // User is logged in – populate profile
+            const displayName = user.displayName || 'User';
+            const email = user.email || 'No email';
+            const uid = user.uid;
+
+            
+            // Set avatar letter
+            avatar.textContent = displayName.charAt(0).toUpperCase();
+             greeting.textContent = `Welcome, ${displayName}!`;
+            userEmail.textContent = email;
+            userDisplayName.textContent = displayName;
+            userUID.textContent = uid;
+        });
+
+        // Sign out
+      signOutBtn.addEventListener('click', async () => {
+    try {
+        await signOut(auth);
+        window.location.href = "../signin.html";
+    } catch (error) {
+        alert('Sign out error: ' + error.message);
+    }
+});
+
+        viewCoursesBtn.addEventListener('click', () => {
+        window.location.href = '../courses-full.html';
+       });
+    </script>
+</body>
+</html>
