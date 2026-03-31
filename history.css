@@ -1,82 +1,141 @@
-.gallery{
-    padding:70px 20px;
-    text-align:center;
-    background:#f9f9f9;
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.gallery-box{
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    flex-wrap:wrap;
+/* ===== BODY ===== */
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.gallery-box img{
-    width:100%;   
-    height:200px; 
-    object-fit:cover;
-    border-radius:15px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.3);
-    transition:0.4s;
+/* ===== HOTEL TITLE ===== */
+.hotel-title {
+    text-align: center;
+    background-color: orange;
+    color: white;
+    padding: 15px 0;
+    margin: 0;
 }
 
-.gallery-box img:hover{
-    transform:scale(1.05);
+/* ===== NAVBAR ===== */
+.topnav {
+    overflow: hidden;
+    background-color: #87CEEB;
 }
 
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
 
+.topnav a:hover {
+    background-color: #D6EAF8;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #2E86C1;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+/* ===== SLIDER ===== */
 .slider {
-  width: 100%;
-  overflow: hidden;
+    width: 100%;
+    overflow: hidden;
 }
 
 .slides img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
 }
 
-.image-content {
-    text-align: center;
+/* ===== ABOUT SECTION ===== */
+.about-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    gap: 40px;
 }
 
-
-.center-text {
-  text-align: left;
-  padding: 40px;
+.text-content {
+    flex: 1;
 }
 
 .green-heading {
-  color: #2e8b57;
+    color: #2e8b57;
 }
 
 .grey-text {
-  color: #555;
-  max-width: 800px;
-  line-height: 1.6;
-  text-align: left;
+    color: #555;
+    line-height: 1.6;
 }
 
+.image-content {
+    flex: 1;
+    text-align: right;
+}
 
+.image-content img {
+    width: 500px;
+    max-width: 100%;
+    border-radius: 15px;
+}
 
+/* ===== GALLERY ===== */
+.gallery {
+    padding: 70px 20px;
+    text-align: center;
+    background: #f9f9f9;
+}
+
+.gallery-box {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.gallery-box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: 0.4s;
+}
+
+.gallery-box img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== CONTAINER ===== */
 .container {
     max-width: 1100px;
     margin: auto;
 }
 
+/* ===== FOOTER ===== */
+.footer {
+    background-color: #003366;
+    padding: 20px 0;
+}
+
 .footer-row {
     display: flex;
     flex-wrap: wrap;
-}
-
-ul {
-    list-style: none;
-    padding: 0; 
-}
-
-.footer {
-    background-color: #003366;  
-    padding: 20px 0;
 }
 
 .footer-col {
@@ -101,6 +160,11 @@ ul {
     background-color: #e91e63;
     height: 2px;
     width: 50px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
 }
 
 .footer-col ul li:not(:last-child) {
@@ -140,7 +204,57 @@ ul {
     background-color: #ffffff;
 }
 
-/* Responsive */
+/* ===== MEDIA QUERIES ===== */
+
+/* Navbar Responsive */
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {
+        display: none;
+    }
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+
+    .topnav.responsive {
+        position: relative;
+    }
+
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+/* About Section Responsive */
+@media (max-width: 768px) {
+    .about-section {
+        flex-direction: row;
+        padding: 20px;
+    }
+
+    .text-content {
+        width: 60%;
+    }
+
+    .image-content {
+        width: 40%;
+        text-align: center;
+    }
+
+    .slides img {
+        height: 250px;
+    }
+}
+
+/* Footer Responsive */
 @media (max-width: 767px) {
     .footer-col {
         width: 50%;
@@ -152,12 +266,4 @@ ul {
     .footer-col {
         width: 100%;
     }
-}
-
-.hotel-title {
-    text-align: center;      
-    background-color: orange;   
-    color: white;             
-    padding: 15px 0;          
-    margin: 0;                
 }

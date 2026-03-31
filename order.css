@@ -1,3 +1,9 @@
+
+
+
+
+
+
 body {
     font-family: Arial, sans-serif;
     background: #f5f7fb;
@@ -33,21 +39,44 @@ input, select, textarea {
 textarea {
     height: 80px;
 }
-
-button {
-    margin-top: 15px;
-    width: 100%;
-    padding: 12px;
-    background: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 5px;
+ .btn {
+   
+    width: 100%; 
+    height: 45px;             
+    font-size: 16px;      
+    background: #4a90e2;  
+    color: white;         
+    border: none;         
+    border-radius: 5px;    
     cursor: pointer;
+    margin-top: 10px;     
+
 }
 
-button:hover {
-    background: #1c5fb8;
+btn:hover {
+    background: #1c5fb8;  
 }
+
+button, .back-btn {
+    display: block;
+    width: 100%;          /* full width of the container */
+    padding: 12px;        /* same padding */
+    font-size: 16px;      /* same font size */
+    background: #4a90e2;  /* same background color */
+    color: white;         /* text color */
+    border: none;         /* no border */
+    border-radius: 5px;   /* rounded corners */
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 15px;     /* spacing above */
+    transition: 0.3s;
+}
+
+button:hover, .back-btn:hover {
+    background: #1c5fb8; 
+}
+
 
 #message {
     margin-top: 15px;
@@ -62,3 +91,6 @@ button:hover {
 .error {
     color: red;
 }
+
+
+

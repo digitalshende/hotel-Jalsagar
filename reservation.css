@@ -68,13 +68,30 @@ button:hover {
     background: #1c5fb8;
 }
 
-#responseMessage {
-    margin-top: 15px;
+
+
+
+ back,
+
+ .back-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
     text-align: center;
-    font-weight: bold;
-    color: green;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
 }
 
+button:hover, .back-btn:hover {
+    background: #1c5fb8;
+}
 /* Responsive */
 @media (max-width: 500px) {
     .container {
